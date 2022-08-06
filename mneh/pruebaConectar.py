@@ -34,7 +34,7 @@ def validarCeldas(hoja_c):
     '''
     band = False
     cds = 'B' + str(num_F + 1)
-    
+
     while(get_effective_format(hoja_c,cds)).backgroundColor != Color(0.5764706,0.76862746,0.49019608) and not band:
         #Se concatenan las coordenadas
         new_cds = 'B'+str(num_F)+':'+'H'+str(num_F)
@@ -53,7 +53,7 @@ def validarCeldas(hoja_c):
             list.clear()
             aux.clear()
         else:
-            print('deberia haber salido')
+            print('Good Bye')
             band = True
 
 
