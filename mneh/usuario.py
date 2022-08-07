@@ -1,3 +1,4 @@
+import string
 class Usuario:
     __email = ''
     __nombre = ''
@@ -15,3 +16,16 @@ class Usuario:
         self.__clave = 0
         self.__plathform
         self.__numTelefono = numTelefono
+
+    def ArreglarNombreyApellido(self):
+        self.__apellido = string.capwords(self.__apellido)
+        self.__nombre = string.capwords(self.__nombre)
+    
+    def SacarGuionesYpuntosDNI(self):
+        if('-' in self.__dni):
+            aux = self.__dni.split('-')
+            aux = ''.join(aux)
+            self.__dni = aux
+    
+    
+

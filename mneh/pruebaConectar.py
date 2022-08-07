@@ -2,13 +2,12 @@ import gspread
 from oauth2client import service_account
 from gspread_formatting import *
 from usuario import Usuario
-from itertools import *
-import time
+
+
 def leerCredenciales():
     scp = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
     creds = service_account.ServiceAccountCredentials.from_json_keyfile_name('C:/Users/herna/Documents/mneh/Hernan/mneh/credentials.json', scp)
     client = gspread.authorize(creds)
-
     hoja_c = client.open('prueba').sheet1
 
     return(hoja_c)
@@ -20,18 +19,6 @@ def validarCeldas(hoja_c):
     fila_P = nums[0]
     fila_P = fila_P.split('B')
     num_F = int(fila_P[1])
-    
-    #Sector de Mierda/Pruebas
-    '''
-    if(get_effective_format(hoja_c,'A'+num_F).backgroundColor == Color(0.5764706,0.76862746,0.49019608)): #Funciona
-        print('nachi')
-    '''
-
-    #print(get_effective_format(hoja_c, 'A11'))
-    '''
-    if(hoja_c.acell('A53').value == None):
-        print('nachi')
-    '''
     band = False
     cds = 'B' + str(num_F + 1)
 
