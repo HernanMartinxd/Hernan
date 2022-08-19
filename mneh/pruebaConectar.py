@@ -3,7 +3,6 @@ from oauth2client import service_account
 from gspread_formatting import *
 from usuario import Usuario
 
-
 def leerCredenciales():
     scp = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
     creds = service_account.ServiceAccountCredentials.from_json_keyfile_name('C:/Users/herna/Documents/mneh/Hernan/mneh/credentials.json', scp)
@@ -29,7 +28,6 @@ def validarCeldas(hoja_c):
         aux = hoja_c.get(new_cds)
 
         if(len(aux) != 0):
-
             #Carga una lista auxiliar con los datos de los alumos
             list = []
             for dat in aux[0]:
