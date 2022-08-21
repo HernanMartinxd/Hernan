@@ -1,7 +1,7 @@
 import gspread
 from oauth2client import service_account
 from gspread_formatting import *
-from usuario import Usuario
+from ClassUsuario import Usuario
 
 def leerCredenciales():
     scp = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
@@ -26,7 +26,7 @@ def validarCeldas(hoja_c):
         new_cds = 'B'+str(num_F)+':'+'H'+str(num_F)
         num_F += 1
         aux = hoja_c.get(new_cds)
-
+        print('mondongo')
         if(len(aux) != 0):
             #Carga una lista auxiliar con los datos de los alumos
             list = []
