@@ -42,6 +42,7 @@ def validarCeldas(hoja_c):
             band = True
 
 
+
 if __name__ == '__main__':
     hoja_c = leerCredenciales()
     validarCeldas(hoja_c)
