@@ -1,4 +1,5 @@
 from ClassUsuario import Usuario
+from datetime import datetime
 import csv
 
 class ListaUsuarios:
@@ -25,14 +26,14 @@ class ListaUsuarios:
         for obj in self.__list:
             obj.SacarGuionesYpuntosDNI()
 
-    def probarGeneradorDeClaves(self):  # Testeado - Funciona 3
+    def probarMetodo3(self):  # Testeado - Funciona 3
 
         for i in range(len(self.__list)):
             self.__list[i].PonePassword()
             print('Password: {} usuario: {}'.format(
                 self.__list[i].getClave(), self.__list[i].getNombre()))
 
-    def BuscarYEliminarDuplicados(self):  # Testeado - Funciona 4
+    def probarMetodo4(self):  # Testeado - Funciona 4
         i = 0
         j = 0
         cantSimilitudes = []
@@ -52,27 +53,38 @@ class ListaUsuarios:
         for i in cnj:
             self.__list.pop(i)
 
-    def TestCodigoCurso(self): #Testeado - Funciona 5
+    def probarMetodo4(self): #Testeado - Funciona 5
         
         for i in range(len(self.__list)):
             self.__list[i].CrearCodigoYAsignarCurso()
-            print(self.__list[i].getDepartamento())
 
-    def MostrarDatosUsuarios(self):
+    def probarMetodo5(self):
 
         for i in range(len(self.__list)):
             print('Nombre: {} - Apellido: {}'.format(self.__list[i].getNombre(),self.__list[i].getApellido()))
 
-        ''' #Mostrar todos los datos de los usuarios
+    def probarMetodo6(self):
+        f = datetime.now()
+        nombre = 'pr/Archivo Carga ' + f.strftime("%M-%Y %h-%m") + '.csv'
+
+        list = []
         for i in range(len(self.__list)):
-            print(self.__list[i])
-            print('------------------------------------------------------')
-           ''' 
+            list.append(self.__list[i].getDatos())
+
+        with open(nombre,'w+',encoding = 'utf-8') as file:
+            writer = csv.writer(file)
+
+            for elem in list:
+                writer.writerow(elem)    
 
 
 
 if __name__ == '__main__':
     obj = ListaUsuarios()
     obj.probarMetodo1()
-    obj.MostrarDatosUsuarios()
+    obj.probarMetodo2()
+    obj.probarMetodo3()
+    obj.probarMetodo4()
+    obj.probarMetodo6()
     print('vamo niubel')
+
