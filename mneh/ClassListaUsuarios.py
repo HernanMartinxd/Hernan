@@ -60,15 +60,24 @@ class ListaUsuarios:
 
     def probarMetodo6(self):
         f = datetime.now()
+
         nombre = 'C:/Users/herna/Desktop/Archivos CSV usuarios/Archivo Usuarios ' + f.strftime("%M-%Y %h-%m") + '.csv'
+
+        nombre = 'pr/Archivo Carga ' + f.strftime("%M-%Y %h-%m") + '.csv'
 
         list = []
         for i in range(len(self.__list)):
             list.append(self.__list[i].getDatos())
 
-        with open(nombre,'w+',newline='',encoding = 'utf-8') as file:
+        with open(nombre,'w+',encoding = 'utf-8') as file:
             writer = csv.writer(file)
+
             for elem in list:
-                writer.writerow(elem)
-        
-        file.close()
+                writer.writerow(elem)    
+
+        with open(nombre,'w+',encoding = 'utf-8') as file:
+            writer = csv.writer(file)
+
+            for elem in list:
+                writer.writerow(elem)    
+
