@@ -1,6 +1,5 @@
 import string
 
-
 class Usuario:
     __email = ''
     __nombre = ''
@@ -11,6 +10,7 @@ class Usuario:
     __plathform = 'plathform'
     __departamento = ''
     __status = ''
+    __courses = ''
 
     def __init__(self, apellido, nombre, email, dni, numTelefono, departamento):
         self.__email = email
@@ -22,8 +22,9 @@ class Usuario:
         self.__plathform
         self.__numTelefono = numTelefono
         self.__status = 'user'
+        self.__courses = 'COURNING'
 
-    # Arreglar Datos
+    # >> Metodos
     def ArreglarNombreyApellido(self):
         self.__apellido = string.capwords(self.__apellido)
         self.__nombre = string.capwords(self.__nombre)
@@ -53,13 +54,14 @@ class Usuario:
                 i += 1  # Queda pendiente realizar el procedimiento de eliminacion cuando ningun dominio coincide con el correo del usuario
 
     def QuitarLetraBasada(self):
-        if (letraBasada1 in self.__nombre or letraBasada2 in self.__nombre):
+        
+        if ('Ñ' in self.__nombre or 'ñ' in self.__nombre):
             nuev = self.__nombre.replace('Ñ', 'N')
             nuev2 = nuev.replace('ñ', 'n')
             self.__nombre = nuev2
 
-        if (letraBasada1 in self.__apellido or letraBasada2 in self.__apellido):
-            nuevAp = apellido.replace('Ñ', 'N')
+        if ('Ñ' in self.__apellido or 'ñ' in self.__apellido):
+            nuevAp = self.__apellido.replace('Ñ', 'N')
             nuevAp2 = nuevAp.replace('ñ', 'n')
             self.__apellido = nuev2
 
@@ -87,7 +89,8 @@ class Usuario:
         }
         if(self.__departamento != 'Otro'):
             self.__departamento = dic[self.__departamento]
-
+            
+    # >> Getters
     def getNombre(self):
         return (self.__nombre)
 
@@ -103,6 +106,12 @@ class Usuario:
     def getDepartamento(self):
         return(self.__departamento)
 
+    def getDatos(self):
+        list = [self.__apellido,self.__nombre,self.__email,self.__dni,self.__clave,self.__plathform,self.__departamento,self.__numTelefono,self.__status,self.__courses]
+        return(list)
+
+     # >> Sobrecarga de operador eq (=)
+    
     def __eq__(self, other):
         val = False
         conct = self.__apellido + self.__nombre + self.__email + \
@@ -115,6 +124,6 @@ class Usuario:
 
         return (val)
 
-
+    
     def __str__(self):
         return('Nombre: {} - Apellido: {} - DNI: {} \n- Numero de Telefono: {} - Clave {} - Departamento {}'.format(self.__nombre,self.__apellido,self.__dni,self.__numTelefono,self.__clave,self.__departamento))
